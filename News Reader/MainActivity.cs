@@ -17,7 +17,9 @@ namespace News_Reader
     [Activity(Label = "News_Reader", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
-        ListView listViewContent;
+        ListView listview;
+        NewsListAdapter adapter;
+        RSS.Item feeds;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -35,20 +37,30 @@ namespace News_Reader
             // And set is to act as an action bar
             SetSupportActionBar(toolbar);
 
-            listViewContent = FindViewById<ListView>(Resource.Id.main_listview);
+            // Get listview from the layout resource
+            listview = FindViewById<ListView>(Resource.Id.main_listview);
 
-            //ContactsAdapter adapter = new ContactsAdapter(this);
-            //listViewContent.Adapter = adapter;
-
-            //Fetch RSS Feeds
-            Activity activity = this;
-            //NewsListAdapter newsListAdapter = new NewsListAdapter(activity);
-            //listViewContent.Adapter = newsListAdapter;
+            // Request to RSS
             var client = new RestClient("http://rss2json.com/");
             var request = new RestRequest("api.json?rss_url=http://feeds.bbc.co.uk/indonesian/index.xml", Method.GET);
+
+            // Response from RSS
             IRestResponse<RSS.RootObject> response = client.Execute<RSS.RootObject>(request);
-            NewsListAdapter newsListAdapter = new NewsListAdapter(activity, response.Data.items);
-            listViewContent.Adapter = newsListAdapter;
+
+            // Creating list adapter and set it to listview
+            NewsListAdapter adapter = new NewsListAdapter(this, response.Data.items);
+            listview.Adapter = adapter;
+
+            // Enable click event when list item clicked
+            listview.ItemClick += ListViewContent_ItemClick;
+        }
+
+        private void ListViewContent_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var item = (RSS.Item)listview.GetItemAtPosition(e.Position);
+            var uri = Android.Net.Uri.Parse(item.link);
+            var intent = new Intent(Intent.ActionView, uri);
+            StartActivity(intent);
         }
     }
 }
