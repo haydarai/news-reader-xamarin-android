@@ -3,9 +3,11 @@ using Android.App;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using Android.OS;
 using Android.Support.V7.App;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Widget;
+
 
 namespace News_Reader
 {
@@ -20,6 +22,10 @@ namespace News_Reader
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+
+            var toolbar = FindViewById<Toolbar>(Resource.Id.main_toolbar);
+
+            SetSupportActionBar(toolbar);
 
             // Get our button from the layout resource,
             // and attach an event to it
