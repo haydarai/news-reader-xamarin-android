@@ -20,11 +20,16 @@ namespace News_Reader
         {
             base.OnCreate(bundle);
 
+            // Set activity to apply color to status bar
+            this.Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
+            // Get toolbar from the layout resource
             var toolbar = FindViewById<Toolbar>(Resource.Id.main_toolbar);
 
+            // And set is to act as an action bar
             SetSupportActionBar(toolbar);
 
             // Get our button from the layout resource,
