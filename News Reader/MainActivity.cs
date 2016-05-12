@@ -18,8 +18,6 @@ namespace News_Reader
     public class MainActivity : AppCompatActivity
     {
         ListView listview;
-        NewsListAdapter adapter;
-        RSS.Item feeds;
 
         protected override void OnCreate(Bundle bundle)
         {
