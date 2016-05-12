@@ -11,10 +11,9 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/main_toolbar">
-        <Button
-            android:id="@+id/MyButton"
+        <ListView
+            android:id="@+id/main_listview"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Hello" />
+            android:layout_height="fill_parent" />
     </LinearLayout>
 </RelativeLayout>

@@ -32,11 +32,11 @@ namespace News_Reader
             // And set is to act as an action bar
             SetSupportActionBar(toolbar);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
+            //// Get our button from the layout resource,
+            //// and attach an event to it
+            //Button button = FindViewById<Button>(Resource.Id.MyButton);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
         }
     }
 }

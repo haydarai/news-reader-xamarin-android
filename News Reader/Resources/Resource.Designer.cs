@@ -1456,9 +1456,6 @@ namespace News_Reader
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0051
-			public const int MyButton = 2131427409;
-			
 			// aapt resource value: 0x7f0b0052
 			public const int action0 = 2131427410;
 			
@@ -1593,6 +1590,9 @@ namespace News_Reader
 			
 			// aapt resource value: 0x7f0b0028
 			public const int list_item = 2131427368;
+			
+			// aapt resource value: 0x7f0b0051
+			public const int main_listview = 2131427409;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int main_toolbar = 2131427408;
