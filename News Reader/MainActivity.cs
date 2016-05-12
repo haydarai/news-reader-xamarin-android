@@ -8,7 +8,6 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Widget;
 
-
 namespace News_Reader
 {
     [Activity(Label = "News_Reader", MainLauncher = true, Icon = "@drawable/icon")]
@@ -25,6 +24,7 @@ namespace News_Reader
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+            
 
             // Get toolbar from the layout resource
             var toolbar = FindViewById<Toolbar>(Resource.Id.main_toolbar);
