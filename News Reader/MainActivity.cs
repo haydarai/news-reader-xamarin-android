@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace News_Reader
 {
-    [Activity(Label = "News_Reader", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "News Reader", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
         ListView listview;
