@@ -11,6 +11,7 @@ using RestSharp;
 using News_Reader.Models;
 using News_Reader.Adapters;
 using System.Collections.Generic;
+using News_Reader.Activities;
 
 namespace News_Reader
 {
@@ -55,9 +56,21 @@ namespace News_Reader
 
         private void ListViewContent_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+            // Get clicked item and take the uri
             var item = (RSS.Item)listview.GetItemAtPosition(e.Position);
-            var uri = Android.Net.Uri.Parse(item.link);
-            var intent = new Intent(Intent.ActionView, uri);
+
+            // Navigate to browser
+            //var uri = Android.Net.Uri.Parse(item.link);
+            //var intent = new Intent(Intent.ActionView, uri);
+
+            // Navigate to in app browser
+            var url = item.link;
+            var title = item.title;
+            var intent = new Intent(this, typeof(WebActivity));
+            intent.PutExtra("url", url);
+            intent.PutExtra("title", title);
+
+            // Execute intent
             StartActivity(intent);
         }
     }

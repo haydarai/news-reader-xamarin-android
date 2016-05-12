@@ -1744,6 +1744,12 @@ namespace News_Reader
 			// aapt resource value: 0x7f0b0012
 			public const int useLogo = 2131427346;
 			
+			// aapt resource value: 0x7f0b0062
+			public const int web_toolbar = 2131427426;
+			
+			// aapt resource value: 0x7f0b0063
+			public const int web_webview = 2131427427;
+			
 			// aapt resource value: 0x7f0b0020
 			public const int withText = 2131427360;
 			
@@ -1910,6 +1916,9 @@ namespace News_Reader
 			
 			// aapt resource value: 0x7f030027
 			public const int toolbar = 2130903079;
+			
+			// aapt resource value: 0x7f030028
+			public const int Web = 2130903080;
 			
 			static Layout()
 			{
