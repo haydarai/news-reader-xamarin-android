@@ -13,7 +13,7 @@
         android:layout_below="@id/main_toolbar">
         <ListView
             android:id="@+id/main_listview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </RelativeLayout>

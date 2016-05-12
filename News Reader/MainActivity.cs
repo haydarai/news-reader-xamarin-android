@@ -7,13 +7,17 @@ using Android.OS;
 using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Widget;
+using RestSharp;
+using News_Reader.Models;
+using News_Reader.Adapters;
+using System.Collections.Generic;
 
 namespace News_Reader
 {
     [Activity(Label = "News_Reader", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
-        int count = 1;
+        ListView listViewContent;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -31,11 +35,20 @@ namespace News_Reader
             // And set is to act as an action bar
             SetSupportActionBar(toolbar);
 
-            //// Get our button from the layout resource,
-            //// and attach an event to it
-            //Button button = FindViewById<Button>(Resource.Id.MyButton);
+            listViewContent = FindViewById<ListView>(Resource.Id.main_listview);
 
-            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            //ContactsAdapter adapter = new ContactsAdapter(this);
+            //listViewContent.Adapter = adapter;
+
+            //Fetch RSS Feeds
+            Activity activity = this;
+            //NewsListAdapter newsListAdapter = new NewsListAdapter(activity);
+            //listViewContent.Adapter = newsListAdapter;
+            var client = new RestClient("http://rss2json.com/");
+            var request = new RestRequest("api.json?rss_url=http://feeds.bbc.co.uk/indonesian/index.xml", Method.GET);
+            IRestResponse<RSS.RootObject> response = client.Execute<RSS.RootObject>(request);
+            NewsListAdapter newsListAdapter = new NewsListAdapter(activity, response.Data.items);
+            listViewContent.Adapter = newsListAdapter;
         }
     }
 }
