@@ -23,7 +23,7 @@ namespace News_Reader.Models
             public string image { get; set; }
         }
 
-        public class Item
+        public class Item : Java.Lang.Object
         {
             public string title { get; set; }
             public string link { get; set; }
